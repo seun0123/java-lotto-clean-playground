@@ -7,22 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class LottoDomainTest {
 
     @Nested
-    @DisplayName("BonusBall 테스트")
-    class BonusBallTest {
-
-        @Test
-        @DisplayName("보너스 볼이 기존 당첨 번호와 중복되면 예외 발생")
-        void shouldThrowExceptionWhenBonusBallDuplicates() {
-            Lotto winningLotto = new Lotto(List.of(
-                    LottoNumber.of(1), LottoNumber.of(2), LottoNumber.of(3),
-                    LottoNumber.of(4), LottoNumber.of(5), LottoNumber.of(6)
-            ));
-
-            assertThrows(IllegalArgumentException.class, () -> new BonusBall(LottoNumber.of(6), winningLotto));
-        }
-    }
-
-    @Nested
     @DisplayName("Lotto 테스트")
     class LottoTest {
 
@@ -132,9 +116,9 @@ class LottoDomainTest {
         @Test
         @DisplayName("당첨 등급을 올바르게 반환해야 한다")
         void shouldReturnCorrectWinningRank() {
-            assertEquals(WinningRank.SIX_MATCH, WinningRank.valueOf(6, false).orElse(null));
-            assertEquals(WinningRank.FIVE_MATCH_WITH_BONUS, WinningRank.valueOf(5, true).orElse(null));
-            assertEquals(WinningRank.FIVE_MATCH, WinningRank.valueOf(5, false).orElse(null));
+            assertEquals(WinningRank.SIX_MATCH, WinningRank.valueOf(6, false));
+            assertEquals(WinningRank.FIVE_MATCH_WITH_BONUS, WinningRank.valueOf(5, true));
+            assertEquals(WinningRank.FIVE_MATCH, WinningRank.valueOf(5, false));
         }
     }
 }

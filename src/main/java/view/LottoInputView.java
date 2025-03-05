@@ -37,19 +37,19 @@ public class LottoInputView {
 
     public WinningLottoNumbers inputWinningLottoNumbers() {
         Lotto winningLotto = new Lotto(convertToLottoNumbers(inputWinningNumbers()));
-        BonusBall bonusBall = inputBonusBall(winningLotto);
+        BonusBall bonusBall = inputBonusBall();
         return new WinningLottoNumbers(winningLotto, bonusBall.getBonusBall().getValue());
     }
 
-    private List<Integer> inputWinningNumbers() { // 🔥 수정: 반환 타입을 List<Integer>로 변경
+    private List<Integer> inputWinningNumbers() {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         return readLottoNumbers();
     }
 
-    public BonusBall inputBonusBall(Lotto winningLotto) {
+    public BonusBall inputBonusBall() {
         System.out.println();
         System.out.println("보너스 볼을 입력해 주세요.");
-        return BonusBall.of(readInt(), winningLotto);
+        return BonusBall.of(readInt());
     }
 
     private List<Integer> readLottoNumbers() {

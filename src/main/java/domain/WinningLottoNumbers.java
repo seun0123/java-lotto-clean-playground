@@ -7,7 +7,7 @@ public class WinningLottoNumbers {
     public WinningLottoNumbers(Lotto winningLotto, int bonusNumber) {
         validateBonusBallNotDuplicate(winningLotto, bonusNumber);
         this.winningLotto = winningLotto;
-        this.bonusBall = new BonusBall(LottoNumber.of(bonusNumber), winningLotto);
+        this.bonusBall = BonusBall.of(bonusNumber);
     }
 
     private void validateBonusBallNotDuplicate(Lotto winningLotto, int bonusNumber) {
@@ -22,9 +22,5 @@ public class WinningLottoNumbers {
 
     public Lotto getWinningLotto() {
         return winningLotto;
-    }
-
-    public BonusBall getBonusBall() {
-        return bonusBall;
     }
 }
